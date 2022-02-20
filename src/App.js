@@ -1,33 +1,31 @@
 import "./App.css";
-import FeedbackOptions from "./components/FeedbackOptions";
-import React from "react";
-import Options from "./components/Options";
 
-class App extends React.Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+import { FeedbackOptions } from "./components/FeedbackOptions";
+import { useState } from "react/cjs/react.development";
+import { Options } from "./components/Options";
 
-  render() {
-    return (
-      <>
-        <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
-        <Options
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-        />
-      </>
-    );
-  }
-  onLeaveFeedback = (feedbackType) => {
-    this.setState({
-      ...this.state,
-      [feedbackType]: this.state[feedbackType] + 1,
-    });
-  };
+export default function App (props) {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  return (
+    <>
+      <FeedbackOptions
+        good={good}
+        setGood={setGood}
+        neutral={neutral}
+        setNeutral={setNeutral}
+        bad={bad}
+        setBad={setBad}
+      />
+      <Options 
+      good={good}
+      neutral={neutral}
+      bad={bad}
+      total={props.total}
+      percantage={props.percantage}
+      />
+    </>
+  );
 }
-
-export default App;

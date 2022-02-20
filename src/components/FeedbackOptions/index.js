@@ -1,14 +1,11 @@
-import React from "react";
-
-class FeedbackOptions extends React.Component {
-  render() {
-    return (
-      <div>
-        <button onClick={()=>this.props.onLeaveFeedback('good')}>Good</button>
-        <button onClick={()=>this.props.onLeaveFeedback('neutral')}>Neutral</button>
-        <button onClick={()=>this.props.onLeaveFeedback('bad')}>Bad</button>
-      </div>
-    );
-  }
+export function FeedbackOptions(props) {
+  
+  return (
+    <div>
+      <button onClick={() => props.setGood(props.good + 1)}>Good</button>
+      <button onClick={() => props.setNeutral(props.neutral + 1)}>Neutral</button>
+      <button onClick={() => props.setBad(props.bad + 1)}>Bad</button>
+    </div>
+  );
 }
-export default FeedbackOptions;
+
